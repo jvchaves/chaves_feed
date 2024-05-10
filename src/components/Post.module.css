@@ -22,6 +22,7 @@
   font-weight: bold;
   color: var(--green-500);
   text-decoration: none; 
+  border-radius: 2px;
 }
 
 .content a:hover {
