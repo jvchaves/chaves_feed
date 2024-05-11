@@ -38,6 +38,14 @@ function handleCreateNewComment(){
   setNewCommentText('')
 }
 
+function deleteComment(commentToDelete){
+  const commentWithOutDeletedOne = comments.filter(comment => {
+    return comment !== commentToDelete
+  })
+
+  setComments(commentWithOutDeletedOne);
+}
+
   return(
     <article className={styles.post}>
       <header>
@@ -79,7 +87,13 @@ function handleCreateNewComment(){
 
       <div className={styles.commentList}>
         {comments.map(comment => {
-          return <Comment key={comment}content={comment}/>
+          return (
+            <Comment 
+              key={comment}
+              onDeleteComment={deleteComment}
+              content={comment}
+            />
+          )
         })}
       </div>
     </article>
