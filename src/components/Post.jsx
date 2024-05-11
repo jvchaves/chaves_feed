@@ -52,6 +52,8 @@ function handleNewCommentInvalid(){
   console.log(event)
 }
 
+const isNewCommentEmpty = newCommentText.length === 0
+
   return(
     <article className={styles.post}>
       <header>
@@ -89,7 +91,7 @@ function handleNewCommentInvalid(){
         />
 
         <footer>
-          <button type="submit">Enviar</button>
+          <button type="submit" disabled={isNewCommentEmpty}>Enviar</button>
         </footer>
       </form>
 
