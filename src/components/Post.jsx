@@ -17,6 +17,7 @@ const [comments, setComments] = useState([
 const [newCommentText, setNewCommentText] = useState('')
 
 function handleNewCommentChange(){
+  event.target.setCustomValidity('')
   setNewCommentText(event.target.value)
 }
 
@@ -44,6 +45,11 @@ function deleteComment(commentToDelete){
   })
 
   setComments(commentWithOutDeletedOne);
+}
+
+function handleNewCommentInvalid(){
+  event.target.setCustomValidity('Este Campo é Obrigatorio!')
+  console.log(event)
 }
 
   return(
@@ -76,8 +82,10 @@ function deleteComment(commentToDelete){
         <textarea 
           name="comment"
           placeholder="Deixe um comentário"
-          value={ newCommentText }
-          onChange={ handleNewCommentChange }
+          value={newCommentText}
+          onChange={handleNewCommentChange}
+          onInvalid={handleNewCommentInvalid}
+          required
         />
 
         <footer>
